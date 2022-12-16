@@ -1,9 +1,24 @@
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import "./App.css";
+import Header from "./Header";
+import Home from "./Home";
+import Login from "./Login";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <ToastContainer />
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
