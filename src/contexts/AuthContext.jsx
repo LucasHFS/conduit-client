@@ -43,6 +43,20 @@ export function AuthProvider({ children }) {
     return () => setErrors([]);
   }, [signOut]);
 
+  function authenticateUser({ username, id, token }){
+    setCookie(undefined, "conduit.token", token, {
+      maxAge: 60 * 60 * 24 * 30,
+      path: "/",
+    });
+
+    setUser({
+      id,
+      username,
+    });
+
+    api.defaults.headers["Authorization"] = `Bearer ${token}`;
+  }
+
   async function signIn({ email, password }) {
     try {
       setLoading(true);
@@ -53,19 +67,7 @@ export function AuthProvider({ children }) {
         },
       });
 
-      const { username, id, token } = response.data.user;
-
-      setCookie(undefined, "conduit.token", token, {
-        maxAge: 60 * 60 * 24 * 30,
-        path: "/",
-      });
-
-      setUser({
-        id,
-        username,
-      });
-
-      api.defaults.headers["Authorization"] = `Bearer ${token}`;
+      authenticateUser(response.data.user)
 
       navigate("/");
     } catch (err) {
@@ -88,7 +90,10 @@ export function AuthProvider({ children }) {
 
       if (response.status === 200) {
         toastSuccess("Account Created!");
-        navigate("/login");
+
+        authenticateUser(response.data.user)
+
+        navigate("/");
       }
     } catch (err) {
       setErrors(formatedErrorsArray(err));

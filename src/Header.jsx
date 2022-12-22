@@ -17,22 +17,34 @@ const Header = () => {
               Home
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/">
-              {" "}
-              <i className="ion-compose"></i>&nbsp;New Article{" "}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/">
-              {" "}
-              <i className="ion-gear-a"></i>&nbsp;Settings{" "}
-            </Link>
-          </li>
           {isAuthenticated ? (
             <>
               <li className="nav-item">
-                <Link className="nav-link" to={`/${user.username}`}>
+                <Link 
+                  className="nav-link"
+                  to="/editor"
+                  data-test="nav-new-article"
+                >
+                  {" "}
+                  <i className="ion-compose"></i>&nbsp;New Article{" "}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/settings"
+                  data-test="nav-settings"
+                >
+                  {" "}
+                  <i className="ion-gear-a"></i>&nbsp;Settings{" "}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to={`/@${user.username}`}
+                  data-test="nav-profile"
+                >
                   {user.username}
                 </Link>
               </li>
@@ -40,12 +52,12 @@ const Header = () => {
           ) : (
             <>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <Link className="nav-link" to="/login" data-test="sign-in">
                   Sign in
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
+                <Link className="nav-link" to="/register" data-test="sign-up">
                   Sign up
                 </Link>
               </li>

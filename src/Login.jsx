@@ -38,6 +38,7 @@ const Login = () => {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  data-test="sign-in-email"
                 />
               </fieldset>
               <fieldset className="form-group">
@@ -50,28 +51,24 @@ const Login = () => {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  data-test="sign-in-password"
                 />
               </fieldset>
 
               {errors?.length ? (
-                <ul className="error-messages" data-testid="error-list">
+                <ul className="error-messages" data-test="error-list">
                   {errors.map((error) => (
                     <li key={error}>{error}</li>
                   ))}
                 </ul>
               ) : null}
-              {loading ? (
                 <button
-                  disabled
+                  disabled={loading}
                   className="btn btn-lg btn-primary pull-xs-right"
+                  data-test="sign-in-submit"
                 >
                   Sign in
                 </button>
-              ) : (
-                <button className="btn btn-lg btn-primary pull-xs-right">
-                  Sign in
-                </button>
-              )}
             </form>
           </div>
         </div>

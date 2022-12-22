@@ -40,6 +40,7 @@ const Register = () => {
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  data-test="sign-up-username"
                 />
               </fieldset>
               <fieldset className="form-group">
@@ -50,6 +51,7 @@ const Register = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  data-test="sign-up-email"
                 />
               </fieldset>
               <fieldset className="form-group">
@@ -62,27 +64,23 @@ const Register = () => {
                   maxLength="20"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  data-test="sign-up-password"
                 />
               </fieldset>
               {errors?.length ? (
-                <ul className="error-messages" data-testid="error-list">
+                <ul className="error-messages" data-test="error-list">
                   {errors.map((error) => (
                     <li key={error}>{error}</li>
                   ))}
                 </ul>
               ) : null}
-              {loading ? (
                 <button
-                  disabled
+                  disabled={loading}
                   className="btn btn-lg btn-primary pull-xs-right"
+                  data-test="sign-up-submit"
                 >
                   Sign up
                 </button>
-              ) : (
-                <button className="btn btn-lg btn-primary pull-xs-right">
-                  Sign up
-                </button>
-              )}
             </form>
           </div>
         </div>
