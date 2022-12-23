@@ -13,7 +13,7 @@ import { server } from "../mocks/server.js";
 import Login from "../Login";
 import { act } from "react-dom/test-utils";
 import { API_URL } from "../services/api.js";
-import { AuthProvider } from "../contexts/AuthContext.jsx";
+import { AuthProvider } from "../hooks/useAuth";
 
 describe("Login", () => {
   beforeAll(() => server.listen());

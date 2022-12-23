@@ -5,7 +5,7 @@ import Header from "./Header";
 import Home from "./Home";
 import Login from "./Login";
 import SignUp from "./Register";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider } from "./hooks/useAuth";
 import { ToastContainer } from "react-toastify";
 
 function App() {

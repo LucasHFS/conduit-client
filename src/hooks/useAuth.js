@@ -1,13 +1,24 @@
+import React, { useState, useEffect, useContext, createContext, useCallback } from "react";
 import { parseCookies, setCookie, destroyCookie } from "nookies";
-import { createContext, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/apiClient";
 import { formatedErrorsArray } from "../utils/request";
 import { toastSuccess } from "../utils/toastify";
 
-export const AuthContext = createContext({});
+const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
+  const auth = useProvideAuth();
+  return <AuthContext.Provider value={auth}>
+           {children}
+         </AuthContext.Provider>;
+}
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+function useProvideAuth() {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -15,33 +26,6 @@ export function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   const isAuthenticated = !!user;
-
-  const signOut = useCallback(() => {
-    destroyCookie(undefined, "conduit.token");
-    setUser(null);
-    navigate("/");
-  }, [navigate]);
-
-  useEffect(() => {
-    const { "conduit.token": token } = parseCookies();
-
-    if (token) {
-      setLoading(true);
-      api
-        .get("/user")
-        .then((response) => {
-          const { id, username } = response.data.user;
-          setUser({ id, username });
-        })
-        .catch(() => {
-          signOut();
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-    return () => setErrors([]);
-  }, [signOut]);
 
   function authenticateUser({ username, id, token }){
     setCookie(undefined, "conduit.token", token, {
@@ -101,19 +85,40 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }
 
-  return (
-    <AuthContext.Provider
-      value={{
-        signIn,
-        signUp,
-        signOut,
-        isAuthenticated,
-        user,
-        loading,
-        errors,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  const signOut = useCallback(() => {
+    destroyCookie(undefined, "conduit.token");
+    setUser(null);
+    navigate("/");
+  }, [navigate]);
+
+  useEffect(() => {
+    const { "conduit.token": token } = parseCookies();
+
+    if (token) {
+      setLoading(true);
+      api
+        .get("/user")
+        .then((response) => {
+          const { id, username } = response.data.user;
+          setUser({ id, username });
+        })
+        .catch(() => {
+          signOut();
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+    return () => setErrors([]);
+  }, [signOut]);
+
+  return {
+    signIn,
+    signUp,
+    signOut,
+    isAuthenticated,
+    user,
+    loading,
+    errors,
+  };
 }

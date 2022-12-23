@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "./contexts/AuthContext";
+import { useAuth } from "./hooks/useAuth";
 
 const Header = () => {
-  const { user, isAuthenticated } = useContext(AuthContext);
+  const { user, isAuthenticated } = useAuth();
 
   return (
     <nav className="navbar navbar-light">

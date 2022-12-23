@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { AuthContext } from "./contexts/AuthContext";
+import { useAuth } from "./hooks/useAuth";
 
 const Home = () => {
-  const { user, signOut, isAuthenticated } = useContext(AuthContext);
+  const { user, signOut, isAuthenticated } = useAuth();
 
   return (
     <div>
