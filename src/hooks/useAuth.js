@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useContext, createContext, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  useCallback,
+} from "react";
 import { parseCookies, setCookie, destroyCookie } from "nookies";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/apiClient";
@@ -9,9 +15,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const auth = useProvideAuth();
-  return <AuthContext.Provider value={auth}>
-           {children}
-         </AuthContext.Provider>;
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
 export const useAuth = () => {
@@ -27,7 +31,7 @@ function useProvideAuth() {
 
   const isAuthenticated = !!user;
 
-  function authenticateUser({ username, id, token }){
+  function authenticateUser({ username, id, token }) {
     setCookie(undefined, "conduit.token", token, {
       maxAge: 60 * 60 * 24 * 30,
       path: "/",
@@ -51,7 +55,7 @@ function useProvideAuth() {
         },
       });
 
-      authenticateUser(response.data.user)
+      authenticateUser(response.data.user);
 
       navigate("/");
     } catch (err) {
@@ -75,7 +79,7 @@ function useProvideAuth() {
       if (response.status === 200) {
         toastSuccess("Account Created!");
 
-        authenticateUser(response.data.user)
+        authenticateUser(response.data.user);
 
         navigate("/");
       }
