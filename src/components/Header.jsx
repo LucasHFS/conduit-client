@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 
 const Header = () => {
   const { user, isAuthenticated } = useAuth();
@@ -19,7 +19,7 @@ const Header = () => {
           {isAuthenticated ? (
             <>
               <li className="nav-item">
-                <Link 
+                <Link
                   className="nav-link"
                   to="/editor"
                   data-test="nav-new-article"

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -62,13 +62,13 @@ const Login = () => {
                   ))}
                 </ul>
               ) : null}
-                <button
-                  disabled={loading}
-                  className="btn btn-lg btn-primary pull-xs-right"
-                  data-test="sign-in-submit"
-                >
-                  Sign in
-                </button>
+              <button
+                disabled={loading}
+                className="btn btn-lg btn-primary pull-xs-right"
+                data-test="sign-in-submit"
+              >
+                Sign in
+              </button>
             </form>
           </div>
         </div>

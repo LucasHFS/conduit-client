@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -74,13 +74,13 @@ const Register = () => {
                   ))}
                 </ul>
               ) : null}
-                <button
-                  disabled={loading}
-                  className="btn btn-lg btn-primary pull-xs-right"
-                  data-test="sign-up-submit"
-                >
-                  Sign up
-                </button>
+              <button
+                disabled={loading}
+                className="btn btn-lg btn-primary pull-xs-right"
+                data-test="sign-up-submit"
+              >
+                Sign up
+              </button>
             </form>
           </div>
         </div>

@@ -8,12 +8,12 @@ import { describe, it, expect } from "@jest/globals";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
-import { server } from "../mocks/server.js";
+import { server } from "../../mocks/server.js";
 
 import Register from "../Register";
 import { act } from "react-dom/test-utils";
-import { API_URL } from "../services/api.js";
-import { AuthProvider } from "../hooks/useAuth";
+import { API_URL } from "../../services/api.js";
+import { AuthProvider } from "../../hooks/useAuth";
 
 describe("Register", () => {
   beforeAll(() => server.listen());
