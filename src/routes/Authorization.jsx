@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
-export const RequireAuth = ({ children }) => {
+export const UserOnlyRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
   const location = useLocation();
@@ -13,7 +13,7 @@ export const RequireAuth = ({ children }) => {
   );
 };
 
-export const RequireGuest = ({ children }) => {
+export const GuestOnlyRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
   const location = useLocation();

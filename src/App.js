@@ -12,7 +12,7 @@ import SignUp from "./pages/Register";
 import Feed from "./pages/Feed";
 import { AuthProvider } from "./hooks/useAuth";
 import Footer from "./components/Footer";
-import { RequireAuth, RequireGuest } from "./routes/Authorization";
+import { UserOnlyRoute, GuestOnlyRoute } from "./routes/Authorization";
 
 function App() {
   return (
@@ -31,25 +31,25 @@ function App() {
             <Route
               path="/feed"
               element={
-                <RequireAuth>
+                <UserOnlyRoute>
                   <Feed />
-                </RequireAuth>
+                </UserOnlyRoute>
               }
             />
             <Route
               path="/login"
               element={
-                <RequireGuest>
+                <GuestOnlyRoute>
                   <Login />
-                </RequireGuest>
+                </GuestOnlyRoute>
               }
             />
             <Route
               path="/register"
               element={
-                <RequireGuest>
+                <GuestOnlyRoute>
                   <SignUp />
-                </RequireGuest>
+                </GuestOnlyRoute>
               }
             />
           </Routes>
