@@ -5,13 +5,14 @@ import { ReactRouter6Adapter } from "use-query-params/adapters/react-router-6";
 import queryString from "query-string";
 
 import "./App.css";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/Register";
 import Feed from "./pages/Feed";
 import { AuthProvider } from "./hooks/useAuth";
 import Footer from "./components/Footer";
+import { RequireAuth, RequireGuest } from "./routes/Authorization";
 
 function App() {
   return (
@@ -24,12 +25,33 @@ function App() {
         }}
       >
         <AuthProvider>
-          <Header />
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/feed" element={<Feed />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<SignUp />} />
+            <Route
+              path="/feed"
+              element={
+                <RequireAuth>
+                  <Feed />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RequireGuest>
+                  <Login />
+                </RequireGuest>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <RequireGuest>
+                  <SignUp />
+                </RequireGuest>
+              }
+            />
           </Routes>
           <Footer />
           <ToastContainer />
