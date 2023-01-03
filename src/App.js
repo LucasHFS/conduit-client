@@ -5,7 +5,7 @@ import { ReactRouter6Adapter } from "use-query-params/adapters/react-router-6";
 import queryString from "query-string";
 
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/Register";
@@ -25,7 +25,7 @@ function App() {
         }}
       >
         <AuthProvider>
-          <Navbar />
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route

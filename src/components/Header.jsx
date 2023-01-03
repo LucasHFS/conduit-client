@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
-const Navbar = () => {
+const Header = () => {
   const { user, isAuthenticated } = useAuth();
 
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
         </Link>
         <ul className="nav navbar-nav pull-xs-right">
           <li className="nav-item">
-            <Link className="nav-link active" to="/">
+            <Link className="nav-link" to="/">
               Home
             </Link>
           </li>
@@ -44,6 +44,10 @@ const Navbar = () => {
                   to={`/@${user.username}`}
                   data-test="nav-profile"
                 >
+                  <img 
+                    className="user-pic"
+                    src="https://api.realworld.io/images/smiley-cyrus.jpeg"
+                    alt="profile"/>
                   {user.username}
                 </Link>
               </li>
@@ -68,4 +72,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
