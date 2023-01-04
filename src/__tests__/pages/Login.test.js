@@ -6,14 +6,14 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "@jest/globals";
 import { BrowserRouter } from "react-router-dom";
+import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
-import { server } from "../mocks/server.js";
 
-import Login from "../Login";
-import { act } from "react-dom/test-utils";
-import { API_URL } from "../services/api.js";
-import { AuthProvider } from "../hooks/useAuth";
+import { server } from "../../mocks/server.js";
+import Login from "../../pages/Login";
+import { API_URL } from "../../services/api.js";
+import { AuthProvider } from "../../hooks/useAuth";
 
 describe("Login", () => {
   beforeAll(() => server.listen());

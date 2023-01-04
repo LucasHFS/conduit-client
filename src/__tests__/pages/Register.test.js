@@ -10,7 +10,8 @@ import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { server } from "../../mocks/server.js";
 
-import Register from "../Register";
+import Register from "../../pages/Register";
+
 import { act } from "react-dom/test-utils";
 import { API_URL } from "../../services/api.js";
 import { AuthProvider } from "../../hooks/useAuth";
