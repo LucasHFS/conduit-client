@@ -7,7 +7,7 @@ export const useFetchTags = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  const fetchArticles = async () => {
+  const fetchTags = async () => {
     setLoading(true);
 
     api
@@ -23,7 +23,7 @@ export const useFetchTags = () => {
       });
   };
   useEffect(() => {
-    fetchArticles();
+    fetchTags();
 
     return () => setErrors([]);
   }, []);

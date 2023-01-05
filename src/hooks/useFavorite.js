@@ -17,20 +17,32 @@ export const useFavorite = (article) => {
 
   const { isAuthenticated } = useAuth();
 
-  const toggleFavoritedArticle = () => {
+  function favorite() {
+    setFavoritesCount(article.favoritesCount - 1);
+    setFavorited(false);
+  }
+
+  function unfavorite() {
+    setFavoritesCount(article.favoritesCount + 1);
+    setFavorited(true);
+  }
+
+  function revertToInitialState() {
+    setFavoritesCount(article.favoritesCount);
+    setFavorited(!favorited);
+  }
+
+  const toggleFavoritedState = () => {
     if (!isAuthenticated) {
       navigate("/login");
       return;
     } else {
       if (favorited && article.favorited) {
-        setFavoritesCount(article.favoritesCount - 1);
-        setFavorited(false);
+        favorite();
       } else if (favorited != article.favorited) {
-        setFavoritesCount(article.favoritesCount);
-        setFavorited(!favorited);
+        revertToInitialState();
       } else if (!favorited && !article.favorited) {
-        setFavoritesCount(article.favoritesCount + 1);
-        setFavorited(true);
+        unfavorite();
       }
     }
   };
@@ -59,7 +71,7 @@ export const useFavorite = (article) => {
 
   const handleToggleFavorite = () => {
     const action = favorited ? "unfavorite" : "favorite";
-    toggleFavoritedArticle();
+    toggleFavoritedState();
 
     if (action === "favorite") {
       favoriteRequest();
