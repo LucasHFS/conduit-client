@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./useAuth";
-import { api } from "../services/apiClient";
-import { formatedErrorsArray } from "../utils/request";
+import { useAuth } from "../../hooks/useAuth";
+import { api } from "../../services/apiClient";
+import { formatedErrorsArray } from "../../utils/request";
 
 export const useFavorite = (article) => {
   const navigate = useNavigate();

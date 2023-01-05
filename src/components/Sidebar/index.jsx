@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useFetchTags } from "../hooks/useFetchTags";
-import Loading from "./Loading";
+import { useFetchTags } from "./useFetchTags";
+import Loading from "../Loading";
 
 const Sidebar = () => {
   const { tags, loading, errors } = useFetchTags();

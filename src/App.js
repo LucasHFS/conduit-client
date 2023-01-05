@@ -6,10 +6,10 @@ import queryString from "query-string";
 
 import "./App.css";
 import Header from "./components/Header";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/Register";
-import Feed from "./pages/Feed";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import SignUp from "./components/Register";
+import Feed from "./components/Feed";
 import { AuthProvider } from "./hooks/useAuth";
 import Footer from "./components/Footer";
 import { UserOnlyRoute, GuestOnlyRoute } from "./routes/Authorization";

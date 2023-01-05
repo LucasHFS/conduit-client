@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-import Banner from "../components/Banner";
-import FeedToggle from "../components/FeedToggle";
-import Sidebar from "../components/Sidebar";
-import { useFetchArticles } from "../hooks/useFetchArticles";
-import PaginatedArticles from "../components/PaginatedArticles";
+import Banner from "../Banner";
+import FeedToggle from "../FeedToggle";
+import Sidebar from "../Sidebar";
+import { useFetchFeedArticles } from "./useFetchFeedArticles";
+import PaginatedArticles from "../PaginatedArticles";
 
-const Home = () => {
+const Feed = () => {
   const useFetchHook = (page) => {
-    return useFetchArticles(page || 1);
+    return useFetchFeedArticles(page || 1);
   };
 
   return (
@@ -30,4 +30,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Feed;

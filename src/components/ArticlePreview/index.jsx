@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useFavorite } from "../hooks/useFavorite";
-import { formatDate } from "../utils/date";
+import { useFavorite } from "./useFavorite";
+import { formatDate } from "../../utils/date";
 
 const ArticlePreview = ({ article }) => {
   const articleDate = formatDate(article.createdAt);

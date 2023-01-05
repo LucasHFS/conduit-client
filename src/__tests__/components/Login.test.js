@@ -11,7 +11,7 @@ import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 
 import { server } from "../../mocks/server.js";
-import Login from "../../pages/Login";
+import Login from "../../components/Login";
 import { API_URL } from "../../services/api.js";
 import { AuthProvider } from "../../hooks/useAuth";
 

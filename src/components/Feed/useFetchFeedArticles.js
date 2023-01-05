@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { NumberParam, StringParam, useQueryParams } from "use-query-params";
-import { api } from "../services/apiClient";
-import { compactObject } from "../utils/object";
-import { formatedErrorsArray } from "../utils/request";
+import { api } from "../../services/apiClient";
+import { compactObject } from "../../utils/object";
+import { formatedErrorsArray } from "../../utils/request";
 
 export const useFetchFeedArticles = (page) => {
   const [data, setData] = useState({});
