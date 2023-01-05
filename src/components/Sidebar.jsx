@@ -24,13 +24,13 @@ const Sidebar = () => {
           ))
         )}
 
-        {errors?.length ? (
+        {!!errors?.length && (
           <ul className="error-messages" data-test="error-list">
             {errors.map((error) => (
               <li key={error}>{error}</li>
             ))}
           </ul>
-        ) : null}
+        )}
       </div>
     </div>
   );

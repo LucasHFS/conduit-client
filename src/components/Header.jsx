@@ -44,10 +44,11 @@ const Header = () => {
                   to={`/@${user.username}`}
                   data-test="nav-profile"
                 >
-                  <img 
+                  <img
                     className="user-pic"
                     src="https://api.realworld.io/images/smiley-cyrus.jpeg"
-                    alt="profile"/>
+                    alt="profile"
+                  />
                   {user.username}
                 </Link>
               </li>

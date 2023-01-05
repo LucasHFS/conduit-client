@@ -67,13 +67,13 @@ const Register = () => {
                   data-test="sign-up-password"
                 />
               </fieldset>
-              {errors?.length ? (
+              {!!errors?.length && (
                 <ul className="error-messages" data-test="error-list">
                   {errors.map((error) => (
                     <li key={error}>{error}</li>
                   ))}
                 </ul>
-              ) : null}
+              )}
               <button
                 disabled={loading}
                 className="btn btn-lg btn-primary pull-xs-right"

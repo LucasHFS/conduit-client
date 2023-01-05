@@ -31,7 +31,7 @@ const ArticlePreview = ({ article }) => {
         <p>{article.description}</p>
         <div className="display-flex space-between">
           <span>Read more...</span>
-          {article.tagList.length ? (
+          {!!article.tagList.length && (
             <div className="tags-container">
               <ul className="tag-list" id="tag-list">
                 {article.tagList.map((tag) => (
@@ -41,7 +41,7 @@ const ArticlePreview = ({ article }) => {
                 ))}
               </ul>
             </div>
-          ) : null}
+          )}
         </div>
       </Link>
     </div>
