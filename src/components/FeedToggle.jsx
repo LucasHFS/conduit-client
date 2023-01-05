@@ -21,27 +21,6 @@ const FeedToggle = () => {
                 Your Feed
               </Link>
             </li>
-
-            {tag ? (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Global Feed
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link active" to={`/${location.search}#`}>
-                    #{tag}
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <li className="nav-item">
-                <Link className={linkClasses("/")} to="/">
-                  Global Feed
-                </Link>
-              </li>
-            )}
           </>
         ) : (
           <>
@@ -50,28 +29,27 @@ const FeedToggle = () => {
                 Your Feed
               </Link>
             </li>
-
-            {tag ? (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Global Feed
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link active" to={`/${location.search}#`}>
-                    #{tag}
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <li className="nav-item">
-                <Link className="nav-link active" to="/">
-                  Global Feed
-                </Link>
-              </li>
-            )}
           </>
+        )}
+        {tag ? (
+          <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Global Feed
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" to={`/${location.search}#`}>
+                #{tag}
+              </Link>
+            </li>
+          </>
+        ) : (
+          <li className="nav-item">
+            <Link className="nav-link active" to="/">
+              Global Feed
+            </Link>
+          </li>
         )}
       </ul>
     </div>
