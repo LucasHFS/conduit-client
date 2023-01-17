@@ -6,9 +6,7 @@ import { useFetchArticles } from "./useFetchArticles";
 import PaginatedArticles from "../PaginatedArticles";
 
 const Home = () => {
-  const useFetchHook = (page) => {
-    return useFetchArticles(page || 1);
-  };
+  const useFetchHook = () => useFetchArticles();
 
   return (
     <div className="home-page">

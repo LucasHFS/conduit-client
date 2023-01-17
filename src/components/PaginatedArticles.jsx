@@ -6,7 +6,7 @@ import ErrorMessages from "./ErrorMessages";
 import Paginate from "./Paginate";
 
 const PaginatedArticles = ({ useFetchArticlesHook }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState();
   const { data, loading, errors } = useFetchArticlesHook(currentPage);
 
   const [queryPage, setQueryPage] = useQueryParam("page", NumberParam);
@@ -43,6 +43,7 @@ const PaginatedArticles = ({ useFetchArticlesHook }) => {
         <Loading article="articles" />
       ) : (
         <>
+          {!data.articles?.length && <p>No articles here!</p>}
           <ArticlesList articles={data.articles} />
           <Paginate
             perPage={paginationInfo?.perPage}

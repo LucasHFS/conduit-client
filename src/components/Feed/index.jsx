@@ -6,9 +6,7 @@ import { useFetchFeedArticles } from "./useFetchFeedArticles";
 import PaginatedArticles from "../PaginatedArticles";
 
 const Feed = () => {
-  const useFetchHook = (page) => {
-    return useFetchFeedArticles(page || 1);
-  };
+  const useFetchHook = () => useFetchFeedArticles();
 
   return (
     <div className="home-page">

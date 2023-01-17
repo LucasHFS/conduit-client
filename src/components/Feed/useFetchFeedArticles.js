@@ -4,23 +4,20 @@ import { api } from "../../services/apiClient";
 import { compactObject } from "../../utils/object";
 import { formatedErrorsArray } from "../../utils/request";
 
-export const useFetchFeedArticles = (page) => {
+export const useFetchFeedArticles = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const [query] = useQueryParams({
-    author: StringParam,
     tag: StringParam,
-    favorited: StringParam,
-    limit: NumberParam,
-    offset: NumberParam,
+    page: NumberParam,
   });
 
-  const { author, tag, favorited } = query;
+  const { tag, page } = query;
 
   const fetchArticles = useCallback(async () => {
-    const params = { author, tag, favorited, page };
+    const params = { tag, page };
 
     const compactedParams = compactObject(params);
 
@@ -35,7 +32,7 @@ export const useFetchFeedArticles = (page) => {
       .finally(() => {
         setLoading(false);
       });
-  }, [author, tag, favorited, page]);
+  }, [tag, page]);
   useEffect(() => {
     fetchArticles();
 

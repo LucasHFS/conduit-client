@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFavorite } from "./useFavorite";
 import { formatDate } from "../../utils/date";
+import TagList from "../TagList";
 
 const ArticlePreview = ({ article }) => {
   const articleDate = formatDate(article.createdAt);
@@ -31,17 +32,7 @@ const ArticlePreview = ({ article }) => {
         <p>{article.description}</p>
         <div className="display-flex space-between">
           <span>Read more...</span>
-          {!!article.tagList.length && (
-            <div className="tags-container">
-              <ul className="tag-list" id="tag-list">
-                {article.tagList.map((tag) => (
-                  <li key={tag} className="tag-default tag-pill tag-outline">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <TagList tags={article.tagList} />
         </div>
       </Link>
     </div>
