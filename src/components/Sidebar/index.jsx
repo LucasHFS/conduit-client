@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFetchTags } from "./useFetchTags";
 import Loading from "../Loading";
+import ErrorMessages from "../ErrorMessages";
 
 const Sidebar = () => {
   const { tags, loading, errors } = useFetchTags();
@@ -24,13 +25,8 @@ const Sidebar = () => {
           ))
         )}
 
-        {!!errors?.length && (
-          <ul className="error-messages" data-test="error-list">
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-        )}
+        {!!errors?.length && <ErrorMessages errors={errors}/>}
+
       </div>
     </div>
   );

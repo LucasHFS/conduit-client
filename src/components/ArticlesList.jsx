@@ -1,5 +1,6 @@
 import Loading from "../components/Loading";
 import ArticlePreview from "../components/ArticlePreview";
+import ErrorMessages from "./ErrorMessages";
 
 const ArticlesList = ({ articles = [], loading, errors }) => {
   return (
@@ -13,13 +14,7 @@ const ArticlesList = ({ articles = [], loading, errors }) => {
           ))}
         </>
       )}
-      {!!errors?.length && (
-        <ul className="error-messages" data-test="error-list">
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-      )}
+      {!!errors?.length && <ErrorMessages errors={errors}/>}
     </>
   );
 };

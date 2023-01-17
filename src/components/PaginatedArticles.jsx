@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NumberParam, useQueryParam } from "use-query-params";
 import Loading from "../components/Loading";
 import ArticlesList from "./ArticlesList";
+import ErrorMessages from "./ErrorMessages";
 import Paginate from "./Paginate";
 
 const PaginatedArticles = ({ useFetchArticlesHook }) => {
@@ -53,13 +54,7 @@ const PaginatedArticles = ({ useFetchArticlesHook }) => {
           />
         </>
       )}
-      {!!errors?.length && (
-        <ul className="error-messages" data-test="error-list">
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-      )}
+      {!!errors?.length && <ErrorMessages errors={errors}/>}
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import ErrorMessages from "./ErrorMessages";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -67,13 +68,7 @@ const Register = () => {
                   data-test="sign-up-password"
                 />
               </fieldset>
-              {!!errors?.length && (
-                <ul className="error-messages" data-test="error-list">
-                  {errors.map((error) => (
-                    <li key={error}>{error}</li>
-                  ))}
-                </ul>
-              )}
+              {!!errors?.length && <ErrorMessages errors={errors}/>}
               <button
                 disabled={loading}
                 className="btn btn-lg btn-primary pull-xs-right"
