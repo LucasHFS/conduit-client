@@ -1,0 +1,57 @@
+.display-flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+#feed-toggle {
+  margin-bottom: 15px;
+}
+
+#tag-list {
+  max-width: 100%;
+}
+
+.tags-container {
+  max-width: 50%;
+}
+
+ul {
+	list-style: none;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+	gap: 20px;
+}
+
+.pagination .page-number {
+	font-size: 16px;
+	font-weight: 600;
+	color: #5cb85c;
+	background: #fff;
+	padding: 10px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.pagination .page-number:hover {
+	color: #fff;
+	background: #5cb85c;
+}
+
+.pagination .active {
+  color: #fff !important;
+	background: #5cb85c;
+}
+
+.pagination .active:hover {
+	color: #5cb85c;
+	background: #fff;
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
+import ErrorMessages from "./ErrorMessages";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -55,20 +56,15 @@ const Login = () => {
                 />
               </fieldset>
 
-              {errors?.length ? (
-                <ul className="error-messages" data-test="error-list">
-                  {errors.map((error) => (
-                    <li key={error}>{error}</li>
-                  ))}
-                </ul>
-              ) : null}
-                <button
-                  disabled={loading}
-                  className="btn btn-lg btn-primary pull-xs-right"
-                  data-test="sign-in-submit"
-                >
-                  Sign in
-                </button>
+              {!!errors?.length && <ErrorMessages errors={errors}/>}
+
+              <button
+                disabled={loading}
+                className="btn btn-lg btn-primary pull-xs-right"
+                data-test="sign-in-submit"
+              >
+                Sign in
+              </button>
             </form>
           </div>
         </div>
